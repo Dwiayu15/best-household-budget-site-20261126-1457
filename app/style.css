@@ -1,0 +1,251 @@
+/* HearthLedger — warm household-budget theme.
+   Cream background, terracotta accents, deep green for money-in and
+   headings. Cards, budget bars, chips, tables; single column on phones. */
+
+:root {
+  --cream: #faf3e6;
+  --cream-2: #f3e7d0;
+  --card: #fffdf8;
+  --ink: #33302a;
+  --ink-soft: #6f675a;
+  --terra: #c05a2e;
+  --terra-dark: #9c4520;
+  --green: #1f5c40;
+  --green-soft: #dcebe1;
+  --amber: #b07d1e;
+  --amber-soft: #f6e8c8;
+  --red: #b3372a;
+  --red-soft: #f7dcd6;
+  --line: #e6d9c3;
+  --shadow: 0 2px 10px rgba(90, 60, 20, 0.08);
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+a { color: var(--terra-dark); }
+
+.site-header {
+  background: var(--green);
+  color: #fdf6e9;
+  padding: 14px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
+.brand-mark {
+  background: var(--terra);
+  color: #fff;
+  font-size: 20px;
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.brand-name { font-size: 20px; font-weight: 700; letter-spacing: 0.2px; }
+.brand-sub { display: block; font-size: 12px; font-weight: 400; color: #cfe0d4; }
+
+.main-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+.main-nav a {
+  color: #e9f0e6;
+  text-decoration: none;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+.main-nav a:hover { background: rgba(255, 255, 255, 0.14); }
+.main-nav a.active { background: var(--terra); color: #fff; font-weight: 600; }
+
+.page { max-width: 1080px; margin: 0 auto; padding: 22px 18px 40px; }
+
+.hero h1 { margin: 4px 0 2px; font-size: 28px; color: var(--green); }
+.hero p { margin: 0 0 18px; color: var(--ink-soft); }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.stat { padding: 16px 18px; display: flex; flex-direction: column; gap: 2px; }
+.stat-label { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--ink-soft); }
+.stat-num { font-size: 23px; color: var(--ink); }
+.stat-num.good { color: var(--green); }
+.stat-num.warn { color: var(--terra-dark); }
+.stat-sub { font-size: 13px; color: var(--ink-soft); }
+
+.panel { padding: 18px 20px; margin-bottom: 16px; }
+.panel h2 { margin: 0 0 14px; font-size: 18px; color: var(--green); }
+.panel-link { margin: 12px 0 0; font-size: 14px; }
+
+/* Budget bars */
+.bar-row { padding: 9px 0; border-bottom: 1px dashed var(--line); }
+.bar-row:last-of-type { border-bottom: none; }
+.bar-head { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.bar-name { font-weight: 600; font-size: 14.5px; }
+.bar-fig { font-size: 13.5px; color: var(--ink-soft); }
+.bar-fig em { font-style: normal; opacity: 0.75; }
+.bar-track { background: var(--cream-2); border-radius: 999px; height: 10px; overflow: hidden; margin-top: 6px; }
+.bar-track.big { height: 14px; }
+.bar-fill { height: 100%; border-radius: 999px; }
+.fill-aman { background: var(--green); }
+.fill-waspada { background: var(--amber); }
+.fill-lewat { background: var(--red); }
+.bar-sub { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; }
+
+/* Chart */
+.chart { width: 100%; height: auto; display: block; }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .axis { font-size: 12px; fill: var(--ink-soft); }
+.chart .bar-in { fill: var(--green); }
+.chart .bar-out { fill: var(--terra); }
+.legend { font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin: 0 4px 0 10px; }
+.dot:first-child { margin-left: 0; }
+.dot-in { background: var(--green); }
+.dot-out { background: var(--terra); }
+
+/* Two-column area under the chart */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.mini-h { margin: 2px 0 10px; font-size: 18px; color: var(--green); }
+.goals-stack { display: flex; flex-direction: column; gap: 12px; }
+
+/* Bills */
+.bill-list { list-style: none; margin: 0; padding: 0; }
+.bill-list li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 14px;
+}
+.bill-list li:last-child { border-bottom: none; }
+.bill-when { font-weight: 700; color: var(--terra-dark); min-width: 52px; }
+.bill-name { flex: 1; }
+.bill-amt { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.bill-items { list-style: none; margin: 0; padding: 0; }
+.bill-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 0; border-bottom: 1px dashed var(--line);
+}
+.bill-item:last-child { border-bottom: none; }
+.bill-date {
+  background: var(--cream-2); border-radius: 10px; text-align: center;
+  padding: 6px 0; width: 52px; flex: none; line-height: 1.15;
+}
+.bill-date strong { display: block; font-size: 18px; color: var(--terra-dark); }
+.bill-date span { font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; }
+.bill-main { flex: 1; display: flex; flex-direction: column; }
+.bill-note { font-size: 13px; color: var(--ink-soft); }
+
+/* Chips */
+.chip {
+  font-size: 12px; font-weight: 600; padding: 3px 10px;
+  border-radius: 999px; white-space: nowrap;
+}
+.chip-aman { background: var(--green-soft); color: var(--green); }
+.chip-waspada { background: var(--amber-soft); color: #7d5a10; }
+.chip-lewat { background: var(--red-soft); color: var(--red); }
+
+/* Budget table + month switcher */
+.month-switch { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.month-btn {
+  font: inherit; font-size: 14px; cursor: pointer;
+  background: var(--card); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px;
+}
+.month-btn:hover { border-color: var(--terra); }
+.month-btn.active { background: var(--terra); border-color: var(--terra); color: #fff; font-weight: 600; }
+
+.table-wrap { overflow-x: auto; }
+.budget-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.budget-table th, .budget-table td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+.budget-table thead th { color: var(--ink-soft); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; }
+.budget-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.budget-table td.neg { color: var(--red); font-weight: 600; }
+.budget-table tfoot td { font-weight: 700; border-bottom: none; border-top: 2px solid var(--line); }
+.table-note { font-size: 13.5px; color: var(--ink-soft); margin: 12px 0 0; }
+
+/* Chart value labels (above each cashflow bar) */
+.chart .bar-val { font-size: 11.5px; font-weight: 600; }
+.chart .val-in { fill: var(--green); }
+.chart .val-out { fill: var(--terra-dark); }
+
+/* Hover lift for summary cards and category rows */
+.cards .card, .goal-card, .bar-row { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.cards .card:hover, .goal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(90, 60, 20, 0.14);
+}
+.bar-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(90, 60, 20, 0.10);
+}
+
+/* Keyboard focus: deep-green outline on nav links and month buttons */
+.main-nav a:focus-visible, .month-btn:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 2px;
+}
+
+/* Goals */
+.goals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.goal-card { padding: 18px 20px; }
+.goal-head { display: flex; align-items: center; gap: 9px; }
+.goal-head h3 { margin: 0; font-size: 16.5px; flex: 1; }
+.goal-icon { font-size: 20px; }
+.goal-pct { font-weight: 700; color: var(--green); }
+.goal-fig { margin: 10px 0 0; font-size: 14px; }
+.goal-note { margin: 8px 0 0; font-size: 13.5px; color: var(--ink-soft); }
+.goal-eta { margin: 8px 0 0; font-size: 13.5px; color: var(--terra-dark); font-weight: 600; }
+.goal-summary p { margin: 4px 0; }
+
+/* 404 */
+.notfound { text-align: center; padding: 44px 20px; }
+.nf-code { font-size: 54px; font-weight: 800; color: var(--terra); }
+.notfound h1 { margin: 4px 0 8px; color: var(--green); }
+
+.site-footer {
+  text-align: center; color: var(--ink-soft); font-size: 13px;
+  padding: 8px 16px 26px;
+}
+
+/* Phone layout */
+@media (max-width: 760px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .grid-2 { grid-template-columns: 1fr; }
+  .goals-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 23px; }
+  .stat-num { font-size: 19px; }
+}
+
+@media (max-width: 430px) {
+  .page { padding: 16px 12px 32px; }
+  .site-header { padding: 12px 14px; }
+  .brand-name { font-size: 18px; }
+  .main-nav a { padding: 6px 10px; font-size: 13.5px; }
+  .cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat { padding: 13px 14px; }
+  .stat-num { font-size: 16.5px; }
+  .panel { padding: 15px 14px; }
+  .bill-item { flex-wrap: wrap; gap: 8px 12px; }
+  .bill-amt { margin-left: auto; }
+  .budget-table { font-size: 13px; }
+  .budget-table th, .budget-table td { padding: 7px 6px; }
+}
